@@ -11,6 +11,8 @@ import java.awt.Font;
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Calculator extends JFrame{
 	private final int defaultWindowWidth = 500;
@@ -20,6 +22,8 @@ public class Calculator extends JFrame{
 	private JButton[] buttons;
 	private JTextField viewer;
 	private final byte totalButtons = 20;
+	private Boolean isFloat = false;
+	//private Boolean isNegative = false;
 
 	public Calculator(){
 		super("Java swing calculator");
@@ -50,7 +54,7 @@ public class Calculator extends JFrame{
 		this.display = new JPanel();
 		this.display.setPreferredSize(new Dimension(this.defaultWindowWidth, (int)(this.defaultWindowHeight / 5)));
 
-		this.viewer = new JTextField("0");
+		this.viewer = new JTextField("");
 		this.viewer.setPreferredSize(this.display.getPreferredSize());
 		this.viewer.setFont(this.viewer.getFont().deriveFont((float)(this.display.getPreferredSize().height * 0.75)));
 		this.viewer.setEditable(false);
@@ -90,6 +94,64 @@ public class Calculator extends JFrame{
 		for(byte i = 0; i < this.totalButtons; i++){
 			this.buttons[i] = new JButton(text[i]);
 			this.buttons[i].setBackground(Color.GRAY);
+
+			this.buttons[i].addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e){
+					final String name = e.getActionCommand();
+					final char lastChar = (viewer.getText().isEmpty()) ? '\u0000' : viewer.getText().charAt(viewer.getText().length() - 1);
+
+					if(name == "C"){
+						viewer.setText("");
+						return;
+					}
+
+					if(name == "\u232B"){ // delete
+						if(!viewer.getText().isEmpty()){
+							if(lastChar == '.')
+								isFloat = false;
+
+							viewer.setText(viewer.getText().substring(0, viewer.getText().length() - 1));
+						}
+
+						return;
+					}
+
+					//if(isMathOperator(name.charAt(0)) || (viewer.getText().isEmpty() && name.charAt(0) == '-' && !isNegative)){
+					if(isMathOperator(name.charAt(0))){
+						//if((!viewer.getText().isEmpty() || (name.charAt(0) == '-' && !isNegative)) && lastChar != '.' && !isMathOperator(lastChar)){
+						if(!viewer.getText().isEmpty() && lastChar != '.' && !isMathOperator(lastChar)){
+							//isNegative = viewer.getText().isEmpty() || (lastChar >= '0' && lastChar <= '9' && !isNegative);
+							isFloat = false;
+							viewer.setText(viewer.getText() + name);
+						}
+
+						return;
+					}
+
+					if(name == "."){
+						if(!isFloat && lastChar != '\u0000' && lastChar >= '0' && lastChar <= '9'){
+							isFloat = true;
+							viewer.setText(viewer.getText() + ".");
+						}
+
+						return;
+					}
+
+					if(name == "="){
+						System.out.println("WiP");
+						viewer.setText("");
+						return;
+					}
+
+					if(name == "0" && viewer.getText().isEmpty())
+						return;
+
+					// always number
+					viewer.setText(viewer.getText() + name);
+				}
+			});
+
 			this.keyboard.add(this.buttons[i]);
 		}
 
@@ -108,5 +170,9 @@ public class Calculator extends JFrame{
 
 			this.buttons[i].setFont(this.buttons[i].getFont().deriveFont((float)((width < height) ? width : height)));
 		}
+	}
+
+	private Boolean isMathOperator(char c){
+		return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '^';
 	}
 }
