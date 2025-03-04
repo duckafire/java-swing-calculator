@@ -20,9 +20,6 @@ public class ResultButton extends AdaptableButtonFont{
 
 	@Override
 	protected void action(ActionEvent e){
-		if(e.getActionCommand() != "=")
-			return;
-
 		this.viewer.setText("");
 		System.out.println("Work in progress");
 	}

@@ -20,12 +20,10 @@ public class NumberButton extends AdaptableButtonFont{
 
 	@Override
 	protected void action(ActionEvent e){
-		char text = e.getActionCommand().charAt(0);
-
-		if(text < '0' || text > '9' || (text == '0' && this.viewer.getText().isEmpty()))
+		if(e.getActionCommand().charAt(0) == '0' && this.viewer.getText().isEmpty())
 			return;
 
-		String newText = this.viewer.getText() + text;
+		String newText = this.viewer.getText() + e.getActionCommand();
 		this.viewer.setText(newText);
 	}
 }

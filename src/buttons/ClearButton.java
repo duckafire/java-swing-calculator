@@ -20,9 +20,6 @@ public class ClearButton extends AdaptableButtonFont{
 
 	@Override
 	protected void action(ActionEvent e){
-		if(e.getActionCommand() != "C")
-			return;
-
 		this.viewer.setText("");
 	}
 }

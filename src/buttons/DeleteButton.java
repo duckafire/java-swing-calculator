@@ -20,11 +20,8 @@ public class DeleteButton extends AdaptableButtonFont{
 
 	@Override
 	protected void action(ActionEvent e){
-		if(e.getActionCommand() != "\u232B" || viewer.getText().isEmpty())
+		if(viewer.getText().isEmpty())
 			return;
-
-		//if(this.getViewerLastChar() == '.')
-		//	isFloat = false;
 
 		int lastCharId = this.viewer.getText().length() - 1;
 		String newText = this.viewer.getText().substring(0, lastCharId);

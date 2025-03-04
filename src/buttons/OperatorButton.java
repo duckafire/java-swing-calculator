@@ -20,7 +20,7 @@ public class OperatorButton extends AdaptableButtonFont{
 
 	@Override
 	protected void action(ActionEvent e){
-		if(this.viewer.getText().isEmpty() || !isMathOperator(e.getActionCommand().charAt(0)) || isMathOperator(this.getViewerLastChar()))
+		if(this.viewer.getText().isEmpty() || isMathOperator(this.getViewerLastChar()))
 			return;
 
 		String newText = this.viewer.getText() + e.getActionCommand();

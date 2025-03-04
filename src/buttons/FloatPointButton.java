@@ -20,9 +20,6 @@ public class FloatPointButton extends AdaptableButtonFont{
 	
 	@Override
 	protected void action(ActionEvent e){
-		if(e.getActionCommand() != ".")
-			return;
-
 		System.out.println("Work in progress");
 		//String newText = this.viewer.getText() + ".";
 		//this.viewer.setText(newText);
