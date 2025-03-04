@@ -9,7 +9,7 @@ buttons:=$(addsuffix .java, ${buttons})
 destine_dir=./classes
 
 all:
-	@javac -Xlint:unchecked ${src_root} ${buttons} -d ${destine_dir}
+	@javac -g -Xlint:unchecked ${src_root} ${buttons} -d ${destine_dir}
 
 run:
 	@java -cp "./classes/" Main

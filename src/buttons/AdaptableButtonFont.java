@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public abstract class AdaptableButtonFont extends JButton{
+	private boolean firstFontSizeUpdate = true;
 	protected static JTextField viewer; // reference
 
 	AdaptableButtonFont(String text, Color backgroundColor, JTextField _viewer){
@@ -17,13 +18,21 @@ public abstract class AdaptableButtonFont extends JButton{
 	}
 
 	public void updateButtonFontSize(){
-		Dimension dim = this.getSize();
+		Font updatedFont;
 
-		int width  = (int)(dim.width  * 0.25);
-		int height = (int)(dim.height * 0.25);
+		if(this.firstFontSizeUpdate){
+			this.firstFontSizeUpdate = false;
+			updatedFont = this.getFont().deriveFont((float)26);
 
-		float newSize = (float)((width < height) ? width : height);
-		Font updatedFont = this.getFont().deriveFont(newSize);
+		}else{
+			Dimension dim = this.getSize();
+
+			int width  = (int)(dim.width  * 0.25);
+			int height = (int)(dim.height * 0.25);
+
+			float newSize = (float)((width < height) ? width : height);
+			updatedFont = this.getFont().deriveFont(newSize);
+		}
 
 		this.setFont(updatedFont);
 		this.revalidate();
