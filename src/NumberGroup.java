@@ -84,19 +84,22 @@ public class NumberGroup{
 	}
 
 	public boolean decrement(){
-		int newLastId = this.content.length() - 2;
-		String newContent = this.content.substring(0, newLastId);
+		if(this.content.equals("(-") || this.content.length() == 1)
+			return true; // remove it
+
+		char removedChar  = this.content.charAt(this.content.length() - 1);
+		char newLastChar  = this.content.charAt(this.content.length() - 2);
+		String newContent = this.content.substring(0, this.content.length() - 1);
 
 		this.content  = newContent;
-		this.lastChar = newContent.charAt(newLastId);
+		this.lastChar = newLastChar;
 
 		if(this.finished)
 			this.finished = false;
 
-		else if(this.lastChar == '.')
+		else if(removedChar == '.')
 			this.floatNumber = false;
 
-		// if `true`, remove it
-		return this.content.isEmpty();
+		return false;
 	}
 }

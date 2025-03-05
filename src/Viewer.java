@@ -83,16 +83,23 @@ public class Viewer extends JTextField{
 	}
 
 	public void decrementTextField(){
-		System.out.println("Work in progress");
-		//if(this.getText().isEmpty())
-		//	return;
+		if(this.getText().isEmpty())
+			return;
 
-		//int lastId = this.getText().length() - 2;
-		//String newText = this.getText().substring(0, lastId);
-		//this.setText(newText);
+		if(this.getText().length() == 1){
+			this.setText("");
+			this.operations.clear();
+			return;
+		}
 
-		//if(this.operations.peek().decrement())
-		//	this.operations.pop();
+		int lastId = this.getText().length() - 1;
+		String newText = this.getText().substring(0, lastId);
+		this.setText(newText);
+
+		if(this.operations.peek().decrement())
+			this.operations.pop();
+
+		this.operations.peek().debug();
 	}
 
 	public void clearAll(){
