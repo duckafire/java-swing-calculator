@@ -1,0 +1,10 @@
+public enum KeyIndexes{
+	CLEAR_ALL,
+	DELETE,
+	RESULT,
+	OPERATOR,
+	POINT,
+	FLOAT_POINT,
+	NUMBER;
+}
+

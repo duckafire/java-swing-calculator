@@ -1,15 +1,11 @@
-src_root=Main Calculator Display Keyboard
-src_root:=$(addprefix ./src/, ${src_root})
-src_root:=$(addsuffix .java, ${src_root})
-
-buttons=AdaptableButtonFont ClearButton DeleteButton FloatPointButton NumberButton OperatorButton ResultButton
-buttons:=$(addprefix ./src/buttons/, ${buttons})
-buttons:=$(addsuffix .java, ${buttons})
+src=Calculator Display Keyboard KeyIndexes Key Main NumberGroup Viewer
+src:=$(addprefix ./src/, ${src})
+src:=$(addsuffix .java, ${src})
 
 destine_dir=./classes
 
 all:
-	@javac -g -Xlint:unchecked ${src_root} ${buttons} -d ${destine_dir}
+	@javac -g -Xlint:unchecked ${src} -d ${destine_dir}
 
 run:
 	@java -cp "./classes/" Main

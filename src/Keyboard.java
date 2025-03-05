@@ -3,15 +3,14 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 
 import java.awt.GridLayout;
 import java.awt.Color;
 
 public class Keyboard extends JPanel{
-	private List<Object> buttons;
+	private List<Key> buttons;
 
-	Keyboard(JTextField _viewer){
+	Keyboard(Viewer viewerReference){
 		super(new GridLayout(5, 4));
 
 		// "\u232B" icon of the delete key
@@ -23,33 +22,27 @@ public class Keyboard extends JPanel{
 			".", "0", "\u232B", "=",
 		};
 
-		buttons = new ArrayList<Object>();
+		this.buttons = new ArrayList<Key>();
+
+		Key newItem;
+		KeyIndexes id;
 
 		for(byte i = 0; i < 20; i++){
-			if(i == 0)
-				this.buttons.add(new ClearButton(text[i], Color.GRAY, _viewer));
-
-			else if(i == 16)
-				this.buttons.add(new FloatPointButton(text[i], Color.GRAY, _viewer));
-
-			else if(i == 18)
-				this.buttons.add(new DeleteButton(text[i], Color.GRAY, _viewer));
-
-			else if(i == 19)
-				this.buttons.add(new ResultButton(text[i], Color.GRAY, _viewer));
-
-			else if((i > 0 && i < 4) || (i < 16 && (i + 1) % 4 == 0))
-				this.buttons.add(new OperatorButton(text[i], Color.GRAY, _viewer));
-
-			else
-				this.buttons.add(new NumberButton(text[i], Color.GRAY, _viewer));
+			if(     i == 0)  id = KeyIndexes.CLEAR_ALL;
+			else if(i == 16) id = KeyIndexes.FLOAT_POINT;
+			else if(i == 18) id = KeyIndexes.DELETE;
+			else if(i == 19) id = KeyIndexes.RESULT;
+			else if((i > 0 && i < 4) || (i < 16 && (i + 1) % 4 == 0)) id = KeyIndexes.OPERATOR;
+			else id = KeyIndexes.NUMBER;
 			
-			this.add((JButton)this.buttons.get(i));
+			newItem = new Key(id, text[i], viewerReference);
+			this.buttons.add(newItem);
+			this.add((JButton)newItem);
 		}
 	}
 
 	public void updateButtonsFontSize(){
-		for(Object item : this.buttons)
-			((AdaptableButtonFont)item).updateButtonFontSize();
+		for(Key item : this.buttons)
+			item.updateButtonFontSize();
 	}
 }
