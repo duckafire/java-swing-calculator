@@ -45,6 +45,10 @@ public class NumberGroup{
 		return this.finished;
 	}
 
+	public String getContent(){
+		return this.content;
+	}
+
 	public byte addEndParentesis(){
 		if(!this.negativeValue)
 			return -1;

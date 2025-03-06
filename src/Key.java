@@ -35,7 +35,7 @@ public class Key extends JButton{
 			this.viewer.decrementTextField();
 
 		else if(this.id == KeyIndexes.RESULT)
-			this.viewer.clearAll();
+			this.viewer.operationResult();
 
 		else
 			this.viewer.incrementTextField(e.getActionCommand(), this.id == KeyIndexes.OPERATOR);

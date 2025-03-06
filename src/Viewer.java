@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.Queue;
 import java.util.EmptyStackException;
 
 import javax.swing.JTextField;
@@ -7,6 +8,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 public class Viewer extends JTextField{
+	private MathParser parser;
 	private Stack<NumberGroup> operations;
 
 	Viewer(){
@@ -17,7 +19,15 @@ public class Viewer extends JTextField{
 		this.setPreferredSize(this.getPreferredSize());
 		this.setHorizontalAlignment(JTextField.RIGHT);
 
+		this.parser = new MathParser();
 		this.operations = new Stack<NumberGroup>();
+	}
+
+	public void updateViewerSize(Display display){
+		float fontSize = (float)(display.getPreferredSize().height * 0.75);
+		Font updatedFont = this.getFont().deriveFont(fontSize);
+
+		this.setFont(updatedFont);
 	}
 
 	private void incrementViewerText(String content, boolean fillWithZero, boolean newGroup){
@@ -28,13 +38,6 @@ public class Viewer extends JTextField{
 
 		String newText = this.getText() + content;
 		this.setText(newText);
-	}
-
-	public void updateViewerSize(Display display){
-		float fontSize = (float)(display.getPreferredSize().height * 0.75);
-		Font updatedFont = this.getFont().deriveFont(fontSize);
-
-		this.setFont(updatedFont);
 	}
 
 	public void incrementTextField(String content, boolean isOperator){
@@ -74,7 +77,7 @@ public class Viewer extends JTextField{
 		}
 
 		if(last.increment(content, (!isNegativeFloat && fillWithZero)))
-			this.incrementViewerText(content, (lastChar == '-' || fillWithZero), false);
+			this.incrementViewerText(content, ((lastChar == '-' && content.equals(".")) || fillWithZero), false);
 
 		if(isOperator)
 			last.setFinished(true);
@@ -86,7 +89,7 @@ public class Viewer extends JTextField{
 		if(this.getText().isEmpty())
 			return;
 
-		if(this.getText().length() == 1){
+		if(this.getText().equals("(-") || this.getText().length() == 1){
 			this.setText("");
 			this.operations.clear();
 			return;
@@ -100,6 +103,27 @@ public class Viewer extends JTextField{
 			this.operations.pop();
 
 		this.operations.peek().debug();
+	}
+
+	public void operationResult(){
+		Queue returned = this.parser.run(this.operations);
+		Boolean isNegative = (Boolean)returned.poll();
+		String result = (String)returned.poll();
+
+		this.operations.clear();
+		this.setText("");
+
+		if(result.equals("0")){ // gambiarra
+			this.incrementTextField(".", false);
+			this.decrementTextField();
+			return;
+		}
+
+		if(isNegative)
+			this.incrementTextField("-", true);
+
+		for(char c : result.toCharArray())
+			this.incrementTextField(Character.toString(c), false);
 	}
 
 	public void clearAll(){

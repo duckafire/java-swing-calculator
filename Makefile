@@ -1,4 +1,4 @@
-src=Calculator Display Keyboard KeyIndexes Key Main NumberGroup Viewer
+src=Calculator Display Keyboard KeyIndexes Key Main NumberGroup Viewer MathParser
 src:=$(addprefix ./src/, ${src})
 src:=$(addsuffix .java, ${src})
 
