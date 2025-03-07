@@ -63,6 +63,12 @@ public class Viewer extends JTextField{
 			return;
 		}
 
+		if(content.equals("0") && last.getContent().equals("0"))
+			return;
+
+		if(last.getContent().matches("[\\(\\-]*0"))
+			this.decrementTextField();
+
 		// before increment
 		final char lastChar = last.getLastChar();
 		final boolean fillWithZero = (isOperator && lastChar == '.');
