@@ -2,10 +2,10 @@ src=Calculator Display Keyboard KeyIndexes Key Main NumberGroup Viewer MathParse
 src:=$(addprefix ./src/, ${src})
 src:=$(addsuffix .java, ${src})
 
-destine_dir=./classes
+destine_dir=./build/
 
 all:
 	@javac -g -Xlint:unchecked ${src} -d ${destine_dir}
 
 run:
-	@java -cp "./classes/" Main
+	@java -cp ${destine_dir} Main
