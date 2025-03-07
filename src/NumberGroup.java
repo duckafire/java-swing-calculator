@@ -80,7 +80,6 @@ public class NumberGroup{
 				this.floatNumber = true;
 		}
 
-
 		this.lastChar = _content.charAt(0);
 		this.content += _content;
 

@@ -1,5 +1,4 @@
 import java.util.Stack;
-import java.util.Queue;
 import java.util.EmptyStackException;
 
 import javax.swing.JTextField;
@@ -45,6 +44,11 @@ public class Viewer extends JTextField{
 
 		try{
 			last = this.operations.peek();
+
+			if(this.operations.size() == 1 && last.getContent().equals("0")){
+				this.decrementTextField();
+				throw new EmptyStackException();
+			}
 
 			if(last.isFinished())
 				throw new EmptyStackException();
@@ -95,20 +99,28 @@ public class Viewer extends JTextField{
 			return;
 		}
 
-		int lastId = this.getText().length() - 1;
-		String newText = this.getText().substring(0, lastId);
+		int length = this.getText().length();
+		String newText = this.getText().substring(0, length - 1);
+
+		if(newText.charAt(length - 2) == '(')
+			newText = newText.substring(0, length - 2);
+
 		this.setText(newText);
 
 		if(this.operations.peek().decrement())
 			this.operations.pop();
 
+		if(this.operations.peek().getLastChar() == ')')
+			this.decrementTextField();
+
 		this.operations.peek().debug();
 	}
 
 	public void operationResult(){
-		Queue returned = this.parser.run(this.operations);
-		Boolean isNegative = (Boolean)returned.poll();
-		String result = (String)returned.poll();
+		if(this.getText().isEmpty())
+			return;
+
+		String result = this.parser.run(this.operations);
 
 		this.operations.clear();
 		this.setText("");
@@ -118,9 +130,6 @@ public class Viewer extends JTextField{
 			this.decrementTextField();
 			return;
 		}
-
-		if(isNegative)
-			this.incrementTextField("-", true);
 
 		for(char c : result.toCharArray())
 			this.incrementTextField(Character.toString(c), false);
