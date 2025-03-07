@@ -59,7 +59,6 @@ public class Viewer extends JTextField{
 
 			this.operations.push(new NumberGroup(content, (content.equals("-"))));
 			this.incrementViewerText(content, (content.equals(".")), true);
-			this.operations.peek().debug(); // DEBUG
 			return;
 		}
 
@@ -91,8 +90,6 @@ public class Viewer extends JTextField{
 
 		if(isOperator)
 			last.setFinished(true);
-
-		last.debug(); // DEBUG
 	}
 
 	public void decrementTextField(){
@@ -118,8 +115,6 @@ public class Viewer extends JTextField{
 
 		if(this.operations.peek().getLastChar() == ')')
 			this.decrementTextField();
-
-		this.operations.peek().debug();
 	}
 
 	public void operationResult(){
@@ -142,11 +137,6 @@ public class Viewer extends JTextField{
 	}
 
 	public void clearAll(){
-		System.out.println("[DEBUG] Removed operations:");
-		for(NumberGroup item : this.operations)
-			item.debug();
-		System.out.println();
-
 		this.operations.clear();
 		this.setText("");
 	}

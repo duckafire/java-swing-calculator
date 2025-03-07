@@ -18,6 +18,7 @@ public class Calculator extends JFrame{
 
 	public Calculator(){
 		super("Java swing calculator");
+		System.out.println("Java swing calculator | v0.0.1 | by DuckAfire | MIT License");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(this.defaultWindowWidth, this.defaultWindowHeight);
 		this.setMinimumSize(new Dimension(220, 230));

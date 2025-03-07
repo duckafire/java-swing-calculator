@@ -19,16 +19,6 @@ public class NumberGroup{
 		this.increment(_content, false);
 	}
 
-	public void debug(){
-		System.out.printf("[\"%s\"\t'%c'\t%b\t%b\t%b]\n",
-					this.content,
-					this.lastChar,
-					this.negativeValue,
-					this.floatNumber,
-					this.finished
-				);
-	}
-
 	public char getLastChar(){
 		return this.lastChar;
 	}

@@ -33,6 +33,9 @@
 * Before a number is placed, operators will be stored and shown in a reservated display.
 	* Therefore instead to show "1+2-", it will show "1+2", and the '-' will be stored in a reservated viewer.
 * Possibility of digit with physical keyboard.
+* Adaptable viewer font size, based on length of its content.
+* Move cursor of writing, with mouse cursor and arrows.
+* Icon for the window.
 
 ---
 
