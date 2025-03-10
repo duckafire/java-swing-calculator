@@ -1,3 +1,5 @@
+package calculator.presentation;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -8,7 +10,7 @@ import java.awt.Font;
 public class Display extends JPanel{
 	private JTextField viewer;
 
-	Display(int width, int height){
+	public Display(int width, int height){
 		super();
 		this.setPreferredSize(new Dimension(width, height));
 

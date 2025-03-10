@@ -1,3 +1,5 @@
+package calculator.presentation;
+
 import javax.swing.JButton;
 
 import java.awt.Dimension;
@@ -10,7 +12,7 @@ import java.awt.event.ActionEvent;
 public class Key extends JButton{
 	private boolean firstFontSizeUpdate = true;
 
-	Key(String text){
+	public Key(String text){
 		super(text);
 		this.setBackground(Color.GRAY);
 

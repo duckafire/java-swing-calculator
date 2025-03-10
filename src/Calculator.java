@@ -1,3 +1,7 @@
+package calculator;
+
+import calculator.presentation.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 

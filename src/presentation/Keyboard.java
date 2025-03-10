@@ -1,3 +1,5 @@
+package calculator.presentation;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ import java.awt.Color;
 public class Keyboard extends JPanel{
 	private List<Key> buttons;
 
-	Keyboard(){
+	public Keyboard(){
 		super(new GridLayout(5, 4));
 
 		// "\u232B" icon of the delete key
