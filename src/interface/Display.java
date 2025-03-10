@@ -3,16 +3,22 @@ import javax.swing.JTextField;
 
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Font;
 
 public class Display extends JPanel{
-	private Viewer viewer; // original
+	private JTextField viewer;
 
 	Display(int width, int height){
 		super();
 		this.setPreferredSize(new Dimension(width, height));
 
-		this.viewer = new Viewer();
-		this.add((JTextField)this.viewer);
+		this.viewer = new JTextField("");
+		this.viewer.setBackground(Color.GRAY);
+		this.viewer.setEditable(false);
+		this.viewer.setPreferredSize(this.getPreferredSize());
+		this.viewer.setHorizontalAlignment(JTextField.RIGHT);
+
+		this.add(this.viewer);
 	}
 
 	public void updateSize(Dimension windowSize){
@@ -27,10 +33,9 @@ public class Display extends JPanel{
 	}
 
 	private void updateViewerSize(){
-		this.viewer.updateViewerSize(this);
-	}
+		float fontSize = (float)(this.getPreferredSize().height * 0.75);
+		Font updatedFont = this.viewer.getFont().deriveFont(fontSize);
 
-	public Viewer getViewer(){
-		return this.viewer;
+		this.viewer.setFont(updatedFont);
 	}
 }

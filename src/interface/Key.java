@@ -8,16 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Key extends JButton{
-	private KeyIndexes id;
-
-	private static Viewer viewer;
 	private boolean firstFontSizeUpdate = true;
 
-	Key(KeyIndexes _id, String text, Viewer viewerReference){
+	Key(String text){
 		super(text);
-		this.id = _id;
 		this.setBackground(Color.GRAY);
-		this.viewer = viewerReference;
 
 		this.addActionListener(new ActionListener(){
 			@Override
@@ -28,17 +23,8 @@ public class Key extends JButton{
 	}
 
 	private void action(ActionEvent e){
-		if(this.id == KeyIndexes.CLEAR_ALL)
-			this.viewer.clearAll();
-
-		else if(this.id == KeyIndexes.DELETE)
-			this.viewer.decrementTextField();
-
-		else if(this.id == KeyIndexes.RESULT)
-			this.viewer.operationResult();
-
-		else
-			this.viewer.incrementTextField(e.getActionCommand(), this.id == KeyIndexes.OPERATOR);
+		// DEBUG: it will be moved
+		System.out.println(this.getText());
 	}
 
 	public void updateButtonFontSize(){

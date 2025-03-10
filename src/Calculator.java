@@ -18,7 +18,7 @@ public class Calculator extends JFrame{
 
 	public Calculator(){
 		super("Java swing calculator");
-		System.out.println("Java swing calculator | v0.0.1 | by DuckAfire | MIT License");
+		System.out.println("Java swing calculator | DEV-version | by DuckAfire | MIT License");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(this.defaultWindowWidth, this.defaultWindowHeight);
 		this.setMinimumSize(new Dimension(220, 230));
@@ -26,7 +26,7 @@ public class Calculator extends JFrame{
 		this.mainPanel = new JPanel(new BorderLayout(4, 4));
 
 		this.display  = new Display(this.defaultWindowWidth, this.defaultWindowHeight);
-		this.keyboard = new Keyboard(this.display.getViewer());
+		this.keyboard = new Keyboard();
 
 		this.addComponentListener(new ComponentAdapter() {
 			@Override

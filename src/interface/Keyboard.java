@@ -10,7 +10,7 @@ import java.awt.Color;
 public class Keyboard extends JPanel{
 	private List<Key> buttons;
 
-	Keyboard(Viewer viewerReference){
+	Keyboard(){
 		super(new GridLayout(5, 4));
 
 		// "\u232B" icon of the delete key
@@ -25,17 +25,9 @@ public class Keyboard extends JPanel{
 		this.buttons = new ArrayList<Key>();
 
 		Key newItem;
-		KeyIndexes id;
 
 		for(byte i = 0; i < 20; i++){
-			if(     i == 0)  id = KeyIndexes.CLEAR_ALL;
-			else if(i == 16) id = KeyIndexes.FLOAT_POINT;
-			else if(i == 18) id = KeyIndexes.DELETE;
-			else if(i == 19) id = KeyIndexes.RESULT;
-			else if((i > 0 && i < 4) || (i < 16 && (i + 1) % 4 == 0)) id = KeyIndexes.OPERATOR;
-			else id = KeyIndexes.NUMBER;
-			
-			newItem = new Key(id, text[i], viewerReference);
+			newItem = new Key(text[i]);
 			this.buttons.add(newItem);
 			this.add((JButton)newItem);
 		}
