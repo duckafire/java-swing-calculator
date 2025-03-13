@@ -8,6 +8,8 @@ interface:=$(addsuffix .java, ${interface})
 
 destine_dir=./build/
 
+javac_flags:=-g -Xlint:all
+
 ifneq ($(wildcard ./build/*),)
 	toclear:=--recursive ./build/*
 else
@@ -16,7 +18,7 @@ endif
 
 all:
 	@rm ${toclear}
-	@javac -g -Xlint:unchecked ${src_root} ${interface} -d ${destine_dir}
+	@javac ${javac_flags} ${src_root} ${interface} -d ${destine_dir}
 
 run:
 	@java -cp ${destine_dir} Main
