@@ -59,7 +59,7 @@ public class DataManager{
 			return true;
 		}
 
-		if(special.equals("-")){
+		if(special.equals("\u00B1")){
 			this.values.getLast().invertValueSignal();
 			return true;
 		}
@@ -80,5 +80,10 @@ public class DataManager{
 		}
 
 		return true;
+	}
+
+	public void clearAll(){
+		this.values.clear();
+		this.operators.clear();
 	}
 }

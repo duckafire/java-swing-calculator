@@ -6,27 +6,19 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Color;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
+@SuppressWarnings("serial")
 public class Key extends JButton{
 	private boolean firstFontSizeUpdate = true;
+	private KeyIndex id;
 
-	public Key(String text){
+	public Key(String text, KeyIndex _id){
 		super(text);
 		this.setBackground(Color.GRAY);
-
-		this.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				action(e);
-			}
-		});
+		this.id = _id;
 	}
 
-	private void action(ActionEvent e){
-		// DEBUG: it will be moved
-		System.out.println(this.getText());
+	public KeyIndex getId(){
+		return this.id;
 	}
 
 	public void updateButtonFontSize(){

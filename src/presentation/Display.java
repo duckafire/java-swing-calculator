@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class Display extends JPanel{
 	private JTextField viewer;
 
@@ -23,8 +24,12 @@ public class Display extends JPanel{
 		this.add(this.viewer);
 	}
 
+	public void updateViewer(String text){
+		this.viewer.setText(text);
+	}
+
 	public void updateSize(Dimension windowSize){
-		this.setPreferredSize(new Dimension(windowSize.width, (int)(windowSize.height / 5)));
+		this.setPreferredSize(new Dimension(windowSize.width, windowSize.height / 5));
 		this.revalidate();
 		this.repaint();
 
