@@ -2,9 +2,9 @@ src_root:=Calculator Main
 src_root:=$(addprefix ./src/, ${src_root})
 src_root:=$(addsuffix .java, ${src_root})
 
-interface:=Display Keyboard Key
-interface:=$(addprefix ./src/presentation/, ${interface})
-interface:=$(addsuffix .java, ${interface})
+presentation:=Display Keyboard Key
+presentation:=$(addprefix ./src/presentation/, ${presentation})
+presentation:=$(addsuffix .java, ${presentation})
 
 destine_dir=./build/
 
@@ -18,7 +18,7 @@ endif
 
 all:
 	@rm ${toclear}
-	@javac ${javac_flags} ${src_root} ${interface} -d ${destine_dir}
+	@javac ${javac_flags} ${src_root} ${presentation} -d ${destine_dir}
 
 run:
 	@java -cp ${destine_dir} Main
