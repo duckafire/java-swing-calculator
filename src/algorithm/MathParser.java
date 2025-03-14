@@ -12,7 +12,7 @@ public class MathParser{
 	}
 
 	public String runAlgorithm(LinkedList<?>[] data){
-		if(data[0].size() == 0)
+		if(data[0].size() < 2)
 			return null;
 
 		this.extractData(data);
