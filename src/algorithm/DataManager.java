@@ -61,6 +61,9 @@ public class DataManager{
 			(this.values.size() == 1 && this.values.getLast().isEqualZero()))
 			return false;
 
+		if(this.values.getLast().hasDecimalContent() == 0)
+			this.increment(0);
+
 		if(this.lastIsOperator)
 			this.operators.pollLast();
 

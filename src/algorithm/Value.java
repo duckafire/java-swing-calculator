@@ -20,6 +20,28 @@ public class Value{
 		return (this.preComma.equals("0") && !this.floatValue);
 	}
 
+	public void setFloatValue(){
+		this.floatValue = true;
+	}
+
+	public boolean isFloatValue(){
+		return this.floatValue;
+	}
+
+	public void invertValueSignal(){
+		this.negativeValue = !this.negativeValue;
+	}
+
+	public byte hasDecimalContent(){
+		if(!this.floatValue)
+			return -1;
+
+		if(this.posComma.isEmpty())
+			return 0;
+
+		return 1;
+	}
+
 	public String getContent(boolean negativeParentesis){
 		String value = "";
 
@@ -45,18 +67,6 @@ public class Value{
 			value += ")";
 
 		return value;
-	}
-
-	public void setFloatValue(){
-		this.floatValue = true;
-	}
-
-	public boolean isFloatValue(){
-		return this.floatValue;
-	}
-
-	public void invertValueSignal(){
-		this.negativeValue = !this.negativeValue;
 	}
 
 	public void increment(Integer value){
