@@ -125,7 +125,11 @@ public class Calculator extends JFrame{
 						String formatedResult = format.adjustDecimalLength(doubleResult, "6");
 
 						data.clearAll();
-						data.increment(Integer.parseInt(formatedResult));
+
+						if(formatedResult.indexOf('.') == -1)
+							data.increment(Integer.parseInt(formatedResult));
+						else
+							data.increment(Double.parseDouble(formatedResult));
 
 						display.updateViewer(format.dataToViewer(data.getData()));
 					}
