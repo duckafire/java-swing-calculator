@@ -1,5 +1,7 @@
 package calculator.presentation;
 
+import calculator.algorithm.OperatorsIcon;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,11 +20,11 @@ public class Keyboard extends JPanel{
 		super(new GridLayout(5, 4));
 
 		String[] texts = {
-			"C", "\u00B1", "%",      "\u00F7",
-			"7", "8",      "9",      "\u00D7",
-			"4", "5",      "6",      "-",
-			"1", "2",      "3",      "+",
-			".", "0",      "\u232B", "=",
+			"C", "\u00B1", OperatorsIcon.POR.getString(), OperatorsIcon.DIV.getString(),
+			"7", "8",      "9",                           OperatorsIcon.MUL.getString(),
+			"4", "5",      "6",                           OperatorsIcon.SUB.getString(),
+			"1", "2",      "3",                           OperatorsIcon.ADD.getString(),
+			".", "0",      "\u232B",                      "=",
 		};
 
 		KeyIndex[] ids = {

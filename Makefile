@@ -6,7 +6,7 @@ presentation:=Display Keyboard Key KeyIndex
 presentation:=$(addprefix ./src/presentation/, ${presentation})
 presentation:=$(addsuffix .java, ${presentation})
 
-algorithm:=DataManager FormatValues MathParser Operator Value
+algorithm:=DataManager FormatValues MathParser Operator Value OperatorsIcon
 algorithm:=$(addprefix ./src/algorithm/, ${algorithm})
 algorithm:=$(addsuffix .java, ${algorithm})
 

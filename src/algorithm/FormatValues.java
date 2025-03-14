@@ -24,7 +24,7 @@ public class FormatValues{
 			operation += val.getContent(true);
 
 			if(ope != null)
-				operation += Character.toString(ope.getId());
+				operation += Character.toString(ope.getVisualId());
 
 			val = (Value)values.pollFirst();
 			ope = (Operator)operators.pollFirst();

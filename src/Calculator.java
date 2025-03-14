@@ -5,6 +5,7 @@ import calculator.algorithm.DataManager;
 import calculator.algorithm.Operator;
 import calculator.algorithm.FormatValues;
 import calculator.algorithm.MathParser;
+import calculator.algorithm.OperatorsIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,19 +70,19 @@ public class Calculator extends JFrame{
 					public void actionPerformed(ActionEvent e){
 						Operator keyMathOperator = null;
 
-						if(key.getText().equals("+"))
+						if(key.getText().equals(OperatorsIcon.ADD.getString()))
 							keyMathOperator = Operator.ADD;
 
-						else if(key.getText().equals("-"))
+						else if(key.getText().equals(OperatorsIcon.SUB.getString()))
 							keyMathOperator = Operator.SUB;
 
-						else if(key.getText().equals("\u00D7"))
+						else if(key.getText().equals(OperatorsIcon.MUL.getString()))
 							keyMathOperator = Operator.MUL;
 
-						else if(key.getText().equals("\u00F7"))
+						else if(key.getText().equals(OperatorsIcon.DIV.getString()))
 							keyMathOperator = Operator.DIV;
 
-						else if(key.getText().equals("%"))
+						else if(key.getText().equals(OperatorsIcon.POR.getString()))
 							keyMathOperator = Operator.POR;
 
 						if(data.increment(keyMathOperator))
