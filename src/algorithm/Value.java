@@ -83,10 +83,7 @@ public class Value{
 
 	public boolean decrement(){
 		if(!this.floatValue){
-			if(this.preComma.isEmpty())
-				this.negativeValue = false;
-			else
-				this.preComma = this.preComma.substring(0, this.preComma.length() - 1);
+			this.preComma = this.preComma.substring(0, this.preComma.length() - 1);
 
 		}else{
 			if(this.posComma.isEmpty())
@@ -96,6 +93,6 @@ public class Value{
 		}
 
 		// if true, remove it
-		return (!this.negativeValue && this.preComma.isEmpty());
+		return this.preComma.isEmpty();
 	}
 }

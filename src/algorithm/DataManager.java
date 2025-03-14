@@ -95,11 +95,17 @@ public class DataManager{
 			return false;
 
 		if(!this.lastIsOperator){
-			if(this.values.getLast().decrement())
+			if(this.values.getLast().decrement()){
 				this.values.pollLast();
+
+				if(!this.values.isEmpty())
+					this.lastIsOperator = true;
+			}
 		
 		}else if(!this.operators.isEmpty()){
 			this.operators.pollLast();
+
+			this.lastIsOperator = false;
 		}
 
 		return true;
@@ -108,5 +114,6 @@ public class DataManager{
 	public void clearAll(){
 		this.values.clear();
 		this.operators.clear();
+		this.lastIsOperator = false;
 	}
 }
