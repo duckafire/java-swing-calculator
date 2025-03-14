@@ -33,7 +33,7 @@ public class FormatValues{
 		return operation;
 	}
 
-	public String resultToViewer(Double result, String floatPointLength){
+	public String adjustDecimalLength(Double result, String floatPointLength){
 		if(result.doubleValue() % 1 == 0)
 			return Integer.toString(result.intValue());
 

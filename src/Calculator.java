@@ -118,7 +118,7 @@ public class Calculator extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e){
 						Double doubleResult   = Double.parseDouble(parser.runAlgorithm(data.getData()));
-						String formatedResult = format.resultToViewer(doubleResult, "6");
+						String formatedResult = format.adjustDecimalLength(doubleResult, "6");
 
 						data.clearAll();
 						data.increment(Integer.parseInt(formatedResult));

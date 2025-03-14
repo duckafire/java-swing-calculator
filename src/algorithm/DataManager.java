@@ -45,7 +45,7 @@ public class DataManager{
 			value *= -1;
 
 		if(this.lastIsOperator || this.values.size() == 0)
-			this.values.add(new Value(value, null));
+			this.values.add(new Value(value));
 		else
 			this.values.getLast().increment(value);
 

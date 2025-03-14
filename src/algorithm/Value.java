@@ -6,20 +6,14 @@ public class Value{
 	private String preComma;
 	private String posComma;
 
-	public Value(Integer value, Character type){
-		if(type == null){
-			this.negativeValue = false;
-			this.floatValue    = false;
-		}else{
-			this.negativeValue = type.equals('-');
-			this.floatValue    = type.equals('.');
-		}
+	public Value(Integer value){
+		this.negativeValue = false;
+		this.floatValue    = false;
 
 		this.preComma = "";
 		this.posComma = "";
 
-		if(value != null)
-			this.increment(value);
+		this.increment(value);
 	}
 
 	public boolean isEqualZero(){
@@ -38,17 +32,11 @@ public class Value{
 		if(!this.preComma.isEmpty())
 			value += this.preComma;
 
-		if(this.floatValue){
-			if(value.isEmpty() || value.equals("-") || value.equals("(-"))
-				value += "0";
-
+		if(this.floatValue)
 			value += ".";
-		}
 
 		if(!this.posComma.isEmpty())
 			value += this.posComma;
-		else if(this.floatValue)
-			value += "0";
 
 		if(value.isEmpty() || value.equals("-") || value.equals("(-"))
 			return null;
