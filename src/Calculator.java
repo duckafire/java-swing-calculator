@@ -117,11 +117,13 @@ public class Calculator extends JFrame{
 				key.addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent e){
-						String stringResult = parser.runAlgorithm(data.getData());
-						Double doubleResult = Double.parseDouble(stringResult);
+						Double doubleResult   = Double.parseDouble(parser.runAlgorithm(data.getData()));
+						String formatedResult = format.resultToViewer(doubleResult, "6");
 
 						data.clearAll();
-						display.updateViewer(format.resultToViewer(doubleResult, "6"));
+						data.increment(Integer.parseInt(formatedResult));
+
+						display.updateViewer(format.dataToViewer(data.getData()));
 					}
 				});
 			}

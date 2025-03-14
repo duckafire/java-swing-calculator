@@ -22,15 +22,35 @@ public class DataManager{
 
 		return data;
 	}
+
+	public boolean increment(Double value){
+		if(value.doubleValue() % 1 == 0)
+			return this.increment(value.intValue());
+
+		String stringValue = value.toString();
+		final int floatPointPosition = stringValue.indexOf('.');
+
+		Integer prePoint = Integer.parseInt(stringValue.substring(0, floatPointPosition));
+		Integer posPoint = Integer.parseInt(stringValue.substring(floatPointPosition + 1));
+
+		return (this.increment(prePoint) && this.increment(".") && this.increment(posPoint));
+	}
 	
 	public boolean increment(Integer value){
 		if(this.values.size() > 0 && this.values.getLast().isEqualZero() && value.equals(0))
 			return false;
 
+		final boolean negativeValue = (value < 0);
+		if(negativeValue)
+			value *= -1;
+
 		if(this.lastIsOperator || this.values.size() == 0)
 			this.values.add(new Value(value, null));
 		else
 			this.values.getLast().increment(value);
+
+		if(negativeValue)
+			this.increment("\u00B1");
 
 		this.lastIsOperator = false;
 		return true;
