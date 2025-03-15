@@ -20,7 +20,7 @@ public class Keyboard extends JPanel{
 		super(new GridLayout(5, 4));
 
 		String[] texts = {
-			"C", "\u00B1", OperatorsIcon.POR.getString(), OperatorsIcon.DIV.getString(),
+			"C", "\u00B1", OperatorsIcon.PER.getString(), OperatorsIcon.DIV.getString(),
 			"7", "8",      "9",                           OperatorsIcon.MUL.getString(),
 			"4", "5",      "6",                           OperatorsIcon.SUB.getString(),
 			"1", "2",      "3",                           OperatorsIcon.ADD.getString(),

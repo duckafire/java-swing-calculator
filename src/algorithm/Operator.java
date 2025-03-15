@@ -24,7 +24,7 @@ public enum Operator{
 			return n0 / n1;
 		}
 	},
-	POR('%', OperatorsIcon.POR.getChar()){
+	PER('%', OperatorsIcon.PER.getChar()){
 		public Double calculate(Double n0, Double n1){
 			return n0 * (n1 / 100);
 		}

@@ -5,7 +5,7 @@ public enum OperatorsIcon{
 	SUB('\u2212', "\u2212"),
 	MUL('\u00D7', "\u00D7"),
 	DIV('\u00F7', "\u00F7"),
-	POR('%', "%");
+	PER('%', "%");
 
 	private char itselfChar;
 	private String itselfString;

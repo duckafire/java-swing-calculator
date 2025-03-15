@@ -82,8 +82,8 @@ public class Calculator extends JFrame{
 						else if(key.getText().equals(OperatorsIcon.DIV.getString()))
 							keyMathOperator = Operator.DIV;
 
-						else if(key.getText().equals(OperatorsIcon.POR.getString()))
-							keyMathOperator = Operator.POR;
+						else if(key.getText().equals(OperatorsIcon.PER.getString()))
+							keyMathOperator = Operator.PER;
 
 						if(data.increment(keyMathOperator))
 							display.updateViewer(format.dataToViewer(data.getData()));
