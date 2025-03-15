@@ -37,7 +37,7 @@ public class DataManager{
 	}
 	
 	public boolean increment(Integer value){
-		if(this.values.size() > 0 && this.values.getLast().isEqualZero() && value.equals(0))
+		if(!this.lastIsOperator && this.values.size() > 0 && this.values.getLast().isEqualZero() && value.equals(0))
 			return false;
 
 		final boolean negativeValue = (value < 0);
@@ -57,8 +57,7 @@ public class DataManager{
 	}
 
 	public boolean increment(Operator operator){
-		if(this.values.size() == 0 ||
-			(this.values.size() == 1 && this.values.getLast().isEqualZero()))
+		if(this.values.size() == 0)
 			return false;
 
 		if(this.values.getLast().hasDecimalContent() == 0)

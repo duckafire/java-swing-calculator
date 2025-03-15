@@ -18,6 +18,9 @@ public enum Operator{
 	},
 	DIV('/', OperatorsIcon.DIV.getChar()){
 		public Double calculate(Double n0, Double n1){
+			if(n1.equals(0.0))
+				return 0.0;
+
 			return n0 / n1;
 		}
 	},
