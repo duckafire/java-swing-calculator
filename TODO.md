@@ -1,24 +1,8 @@
-### Code architecture
-
-* Separate the **interface** and the **math logic**:
-	* Interface:
-		* Receive the user input.
-		* Filter the user input.
-		* Show captured informations.
-		* Send user input to math logic.
-	* Math logic:
-		* Receive the interface input.
-		* Store values (like *double*).
-		* Return the storage state to interface
-		* Calculate result and send it to interface
-* Improvements in object communication and events/actions.
-
----
-
 ### Enhancement
 
 * Advanced mode:
 	* New buttons:
+		* Exponentiation
 		* Open parentesis
 		* Close parentesus
 		* Root
@@ -42,6 +26,6 @@
 ## Style
 
 * Different colors to elements
-* Light and dark mode
+* Color modes
 * Buttons with rounded corners
 * Small space between buttons
