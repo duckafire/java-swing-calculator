@@ -73,7 +73,7 @@ public class DataManager{
 	}
 
 	public boolean increment(String special){
-		if(this.values.size() == 0)
+		if(this.values.size() == 0 || this.lastIsOperator)
 			return false;
 
 		if(special.equals(".") && !this.values.getLast().isFloatValue()){
