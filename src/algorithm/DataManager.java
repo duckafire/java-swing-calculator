@@ -29,9 +29,13 @@ public class DataManager{
 
 		String stringValue = value.toString();
 		final int floatPointPosition = stringValue.indexOf('.');
+		int   scientificNotationChar = stringValue.indexOf('E');
+
+		if(scientificNotationChar == -1)
+			scientificNotationChar = stringValue.length();
 
 		Integer prePoint = Integer.parseInt(stringValue.substring(0, floatPointPosition));
-		Integer posPoint = Integer.parseInt(stringValue.substring(floatPointPosition + 1));
+		Integer posPoint = Integer.parseInt(stringValue.substring(floatPointPosition + 1, scientificNotationChar));
 
 		return (this.increment(prePoint) && this.increment(".") && this.increment(posPoint));
 	}
