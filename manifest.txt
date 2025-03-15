@@ -1,0 +1,5 @@
+Main-Class: Main
+License: MIT
+GitHub: https://github.com/duckafire/java-swing-calculator
+Implementation-Title: Java_Swing_Calculator
+Implementation-Version: 0.0.2

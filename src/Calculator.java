@@ -32,8 +32,8 @@ public class Calculator extends JFrame{
 	private MathParser parser;
 
 	public Calculator(){
-		super("Java swing calculator");
-		System.out.println("Java swing calculator | DEV-version | by DuckAfire | MIT License");
+		super("Java Swing Calculator");
+		System.out.println("Java Swing Calculator | v0.0.2 | by DuckAfire | MIT License");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(this.defaultWindowWidth, this.defaultWindowHeight);
 		this.setMinimumSize(new Dimension(220, 230));

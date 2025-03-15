@@ -11,21 +11,36 @@ algorithm:=$(addprefix ./src/algorithm/, ${algorithm})
 algorithm:=$(addsuffix .java, ${algorithm})
 
 
-destine_dir=./build/
+BUILD_DIR=./build/
 
-javac_flags:=-g -Xlint:all
+JAVAC_FLAGS:=-g -Xlint:all
+
+
+JAR_NAME:=../bin/java-swing-calculator.jar
+JAR_FLAGS:=cfm # --create --file --manifest
+JAR_MANIFEST:=../manifest.txt
+
+jar_sub_src:=presentation/ algorithm/
+jar_sub_src:=$(addprefix calculator/, ${jar_sub_src})
+
+JAR_SRC_ROOT:=calculator/
+JAR_SRC:=Main.class $(addsuffix *.class, ${JAR_SRC_ROOT} ${jar_sub_src})
 
 
 ifneq ($(wildcard ./build/*),)
-	toclear:=--recursive ./build/*
+	TOCLEAR:=--recursive ./build/*
 else
-	toclear:=--force
+	# to avoid generating an erro/warning
+	TOCLEAR:=--force
 endif
 
 
 all:
-	@rm ${toclear}
-	@javac ${javac_flags} ${src_root} ${presentation} ${algorithm} -d ${destine_dir}
+	@rm ${TOCLEAR}
+	@javac ${JAVAC_FLAGS} ${src_root} ${presentation} ${algorithm} -d ${BUILD_DIR}
 
 run:
-	@java -cp ${destine_dir} Main
+	@java -cp ${BUILD_DIR} Main
+
+jar:
+	@cd ./build && jar ${JAR_FLAGS} ${JAR_NAME} ${JAR_MANIFEST} ${JAR_SRC}
